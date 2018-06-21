@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8"/>
+<title>Insert title here</title>
+<script src="/lib/jquery/jquery-1.10.2.min.js"></script>
+</head>
+<body>
+	用户名：<input name="loginName" id="loginName" value=""/>
+	密码：<input name="loginPwd" id="loginPwd" value=""/>
+	<input type="button" value="登录" onclick="login()"/>
+</body>
+<script>
+	function login(){
+		var loginName = $("#loginName").val();
+		var loginPwd = $("#loginPwd").val();
+		$.ajax({
+			url:"login.do",
+			data:{"loginName":loginName,"loginPwd":loginPwd},
+			success:function(result){
+				console.log(result);
+				if(result.success){
+				window.location= result.data;
+				}
+			},
+			error:function(){
+				
+			}
+		});
+	}
+</script>
+</html>
